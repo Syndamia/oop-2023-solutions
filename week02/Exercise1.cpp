@@ -39,8 +39,7 @@ public:
 		return true;
 	}
 
-	int getAuthors(char** ref) {
-		ref = authors;
+	int getAuthors() {
 		return authorsCount;
 	}
 	bool setAuthors(char** newAuthors, int count) {
