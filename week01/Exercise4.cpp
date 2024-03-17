@@ -12,6 +12,10 @@ struct Flight {
 	float flightPrice;
 };
 
+/*
+ * Подточка а)
+ */
+
 void sortByTakeoff(Flight* flights, int N) {
 	for (int i = 0; i < N-1; i++) {
 		for (int j = 0; j < N-1 - i; j++) {
@@ -24,11 +28,8 @@ void sortByTakeoff(Flight* flights, int N) {
 	}
 }
 
-/*
- * Подточка а)
- */
-
 void A(Flight* flights, int N) {
+	sortByTakeoff(flights, N);
 	for (int i = 0; i < N; i++) {
 		std::cout << flights[i].takeoffCity << " " << flights[i].landingCity << " " << flights[i].flightPrice << std::endl;
 	}
@@ -257,7 +258,6 @@ int main() {
 		         >> flights[i].landingTime
 		         >> flights[i].flightPrice;
 	}
-	sortByTakeoff(flights, N);
 
 	char cityToTakeoff[1024];
 	char cityToLand[1024];
