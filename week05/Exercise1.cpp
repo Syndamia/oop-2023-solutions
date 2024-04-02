@@ -24,9 +24,10 @@ public:
 		patients[lastIndex++] = newPatient;
 	}
 
-	// По принцип логиката трябва да е по-сложна, да се маха пациент по индекс и
-	// след това да се изместват останалите, но за целите на задачата това не е нужно
-	void RemovePatient() {
+	void RemovePatient(int index) {
+		for (int i = index; i < lastIndex - 1; i++) {
+			patients[i] = patients[i+1];
+		}
 		lastIndex--;
 	}
 };
