@@ -21,7 +21,7 @@ GradeWithName::~GradeWithName() {
 	free();
 }
 
-GradeWithName::GradeWithName(const GradeWithName& other) {
+GradeWithName::GradeWithName(const GradeWithName& other) : Grade(other) {
 	copyFrom(other);
 }
 

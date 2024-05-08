@@ -52,6 +52,18 @@ const char* User::GetName() {
 	return this->name;
 }
 
+void User::SetName(const char* newName) {
+	delete[] name;
+	name = new char[strlen(newName) + 1];
+	strcpy(name, newName);
+}
+
 const char* User::GetPassword() {
 	return this->password;
+}
+
+void User::SetPassword(const char* newPassword) {
+	delete[] password;
+	password = new char[strlen(newPassword) + 1];
+	strcpy(password, newPassword);
 }

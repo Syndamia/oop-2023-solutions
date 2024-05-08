@@ -22,9 +22,13 @@ public:
 	T& operator[](unsigned index);
 	T& operator[](unsigned index) const;
 	Array<T>& operator+=(const Array<T>& right);
-	friend bool operator==(const Array<T>& left, const Array<T>& right);
-	friend bool operator!=(const Array<T>& left, const Array<T>& right);
-	friend Array<T> operator+(const Array<T>& left, const Array<T>& right);
+
+	template <class U>
+	friend bool operator==(const Array<U>& left, const Array<U>& right);
+	template <class U>
+	friend bool operator!=(const Array<U>& left, const Array<U>& right);
+	template <class U>
+	friend Array<U> operator+(const Array<U>& left, const Array<U>& right);
 };
 
 template <class T>

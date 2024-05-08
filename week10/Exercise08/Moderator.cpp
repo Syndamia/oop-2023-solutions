@@ -1,13 +1,12 @@
 #include "Moderator.h"
 #include <cstring>
+#include <iostream>
 
 void Moderator::free() {
-	User::free();
 	delete[] signature;
 }
 
 void Moderator::copyFrom(const Moderator& other) {
-	User::copyFrom(other);
 	this->signature = new char[strlen(other.signature) + 1];
 	strcpy(this->signature, other.signature);
 }
@@ -17,38 +16,32 @@ Moderator::Moderator() : User() {
 }
 
 Moderator::~Moderator() {
-	Moderator::free();
+	free();
 }
 
-Moderator::Moderator(const Moderator& other) {
-	Moderator::copyFrom(other);
+Moderator::Moderator(const Moderator& other) : User(other) {
+	copyFrom(other);
 }
 
 Moderator& Moderator::operator=(const Moderator& other) {
 	if (this != &other) {
-		Moderator::free();
-		Moderator::copyFrom(other);
+		User::operator=(other);
+		free();
+		copyFrom(other);
 	}
 	return *this;
 }
 
-Moderator::Moderator(Moderator&& other) {
-	this->name = other.name;
-	other.name = nullptr;
-	this->password = other.password;
-	other.password = nullptr;
+Moderator::Moderator(Moderator&& other) : User(other) {
 	this->signature = other.signature;
 	other.signature = nullptr;
 }
 
 Moderator& Moderator::operator=(Moderator&& other) {
 	if (this != &other) {
-		Moderator::free();
+		free();
+		User::operator=(std::move(other));
 
-		this->name = other.name;
-		other.name = nullptr;
-		this->password = other.password;
-		other.password = nullptr;
 		this->signature = other.signature;
 		other.signature = nullptr;
 	}

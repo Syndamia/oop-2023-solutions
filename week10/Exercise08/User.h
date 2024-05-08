@@ -1,12 +1,12 @@
 #pragma once
 
 class User {
+	void free();
+	void copyFrom(const User& other);
+
 protected:
 	char* name;
 	char* password;
-
-	void free();
-	void copyFrom(const User& other);
 
 public:
 	User();
@@ -17,5 +17,7 @@ public:
 	User& operator=(User&& other);
 
 	const char* GetName();
+	void SetName(const char* newName);
 	const char* GetPassword();
+	void SetPassword(const char* newPassword);
 };

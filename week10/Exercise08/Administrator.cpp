@@ -1,4 +1,5 @@
 #include "Administrator.h"
+#include <iostream>
 
 void Administrator::resize() {
 	allocated *= 2;
@@ -11,16 +12,14 @@ void Administrator::resize() {
 }
 
 void Administrator::free() {
-	Moderator::free();
 	delete[] arr;
 }
 
 void Administrator::copyFrom(const Administrator& other) {
-	Moderator::copyFrom(other);
 	this->arr = new int[other.allocated];
 	for (int i = 0; i < other.size; i++) {
 		this->arr[i] = other.arr[i];
-}
+	}
 }
 
 Administrator::Administrator() : Moderator() {
@@ -29,28 +28,23 @@ Administrator::Administrator() : Moderator() {
 }
 
 Administrator::~Administrator() {
-	Administrator::free();
+	free();
 }
 
-Administrator::Administrator(const Administrator& other) {
-	Administrator::copyFrom(other);
+Administrator::Administrator(const Administrator& other) : Moderator(other) {
+	copyFrom(other);
 }
 
 Administrator& Administrator::operator=(const Administrator& other) {
 	if (this != &other) {
-		Administrator::free();
-		Administrator::copyFrom(other);
+		Moderator::operator=(other);
+		free();
+		copyFrom(other);
 	}
 	return *this;
 }
 
-Administrator::Administrator(Administrator&& other) {
-	this->name = other.name;
-	other.name = nullptr;
-	this->password = other.password;
-	other.password = nullptr;
-	this->signature = other.signature;
-	other.signature = nullptr;
+Administrator::Administrator(Administrator&& other) : Moderator(other) {
 	this->arr = other.arr;
 	other.arr = nullptr;
 	this->size = other.size;
@@ -59,14 +53,9 @@ Administrator::Administrator(Administrator&& other) {
 
 Administrator& Administrator::operator=(Administrator&& other) {
 	if (this != &other) {
-		Administrator::free();
+		free();
+		Moderator::operator=(std::move(other));
 
-		this->name = other.name;
-		other.name = nullptr;
-		this->password = other.password;
-		other.password = nullptr;
-		this->signature = other.signature;
-		other.signature = nullptr;
 		this->arr = other.arr;
 		other.arr = nullptr;
 		this->size = other.size;

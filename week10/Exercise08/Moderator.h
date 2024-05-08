@@ -2,11 +2,11 @@
 #include "User.h"
 
 class Moderator : public User {
-protected:
-	char* signature;
-
 	void free();
 	void copyFrom(const Moderator& other);
+
+protected:
+	char* signature;
 
 public:
 	Moderator();
