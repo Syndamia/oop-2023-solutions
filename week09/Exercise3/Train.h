@@ -20,7 +20,7 @@ public:
 	Train(Train&& other);
 	Train& operator=(Train&& other);
 
-	Train(const char model[127], unsigned railID, const char* regionsFileName);
+	Train(const char model[128], unsigned railID, const char* regionsFileName);
 
 	void TransferNextRegion();
 	void SwitchRailLine(unsigned railID, const char* regionsFileName);

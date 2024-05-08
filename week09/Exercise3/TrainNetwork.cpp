@@ -2,6 +2,14 @@
 #include <cstring>
 #include <fstream>
 
+TrainNetwork::TrainNetwork(const char id[8], Train trains[512]) {
+	strcpy(this->id, id);
+	for (int i = 0; i < 512; i++) {
+		this->trains[i] = trains[i];
+		collided[i] = false;
+	}
+}
+
 bool TrainNetwork::HaveCollided(int index1, int index2) {
 	if (trains[index1].railID != trains[index2].railID) {
 		return false;
@@ -10,6 +18,9 @@ bool TrainNetwork::HaveCollided(int index1, int index2) {
 		return false;
 	}
 
+	// Остава да проверим дали currentRegion е последния ред във файла
+
+	// Допускаме, че за конкретно railID съществува единствен конкретен файл (единствено съдържание)
 	std::ifstream regionFile(trains[index1].regionsFileName);
 	if (!regionFile.is_open()) {
 		throw "Couldn't open region file!";
@@ -31,7 +42,7 @@ bool TrainNetwork::HaveCollided(int index1, int index2) {
 		regionFile.seekg(-1, std::ios::cur);
 	}
 
-	bool lastLineEqualsCurrent = (regionFile.tellg() == -1 || regionFile.peek() == '\n') && regionIndex == 0;
+	bool lastLineEqualsCurrent = (regionFile.fail() || regionFile.peek() == '\n') && regionIndex == 0;
 	regionFile.close();
 
 	return !lastLineEqualsCurrent;
@@ -46,7 +57,7 @@ int TrainNetwork::RunTrains() {
 			if (collided[i]) continue;
 
 			for (int j = 0; j < 512; j++) {
-				if (collided[j] || j == i) continue;
+				if (j == i) continue;
 
 				if (HaveCollided(i, j)) {
 					collided[i] = collided[j] = true;

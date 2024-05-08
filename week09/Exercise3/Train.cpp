@@ -49,18 +49,37 @@ Train::Train(Train&& other) {
 	other.currentRegion = nullptr;
 }
 
+Train& Train::operator=(Train&& other) {
+	if (this != &other) {
+		free();
+
+		strcpy(this->model, other.model);
+		this->railID = other.railID;
+
+		this->regionsFileName = other.regionsFileName;
+		other.regionsFileName = nullptr;
+		this->currentRegion = other.currentRegion;
+		other.currentRegion = nullptr;
+	}
+	return *this;
+}
+
 void Train::setCurrentRegion(std::ifstream& inFile) {
 	int start = inFile.tellg();
 	while (!inFile.eof() && inFile.peek() != '\n') {
 		inFile.get();
 	}
-	inFile.clear();
+	if (inFile.eof()) {
+		inFile.clear();
+		inFile.seekg(0, std::ios::end);
+	}
 
 	int length = inFile.tellg();
 	this->currentRegion = new char[length + 1];
 
 	inFile.seekg(start, std::ios::beg);
-	inFile.getline(this->currentRegion, length + 1);
+	inFile.getline(this->currentRegion, length);
+	this->currentRegion[length] = '\0';
 }
 
 Train::Train(const char model[128], unsigned railID, const char* regionsFileName) {
@@ -108,7 +127,8 @@ void Train::TransferNextRegion() {
 		throw "Couldn't open regions file!";
 	}
 
-	while (!fileStringEq(inFile, currentRegion));
+	while (!fileStringEq(inFile, currentRegion)) {
+	}
 	setCurrentRegion(inFile);
 
 	inFile.close();
