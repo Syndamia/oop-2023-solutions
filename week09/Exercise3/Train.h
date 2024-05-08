@@ -25,5 +25,6 @@ public:
 	void TransferNextRegion();
 	void SwitchRailLine(unsigned railID, const char* regionsFileName);
 
+	// Това е за удобство, по-добрия начин е да има get-ъри и set-ъри, но така е по-лесно
 	friend class TrainNetwork;
 };
