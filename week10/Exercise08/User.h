@@ -10,7 +10,7 @@ protected:
 
 public:
 	User();
-	~User();
+	virtual ~User();
 	User(const User& other);
 	User& operator=(const User& other);
 	User(User&& other);

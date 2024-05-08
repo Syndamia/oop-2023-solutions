@@ -10,7 +10,7 @@ protected:
 
 public:
 	Moderator();
-	~Moderator();
+	virtual ~Moderator();
 	Moderator(const Moderator& other);
 	Moderator& operator=(const Moderator& other);
 	Moderator(Moderator&& other);
