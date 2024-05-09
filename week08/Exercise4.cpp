@@ -122,6 +122,7 @@ bool operator!=(const FloatArray& left, const FloatArray& right) {
 }
 
 std::ostream& operator<<(std::ostream& ostr, const FloatArray& right) {
+	ostr << right.lastUnused << " ";
 	for (int i = 0; i < right.lastUnused; i++) {
 		ostr << right.numbers[i] << " ";
 	}
