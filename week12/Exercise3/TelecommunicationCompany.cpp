@@ -1,13 +1,6 @@
 #include "TelecommunicationCompany.h"
 #include "MobileDevice.h"
 
-void TelecommunicationCompany::free() {
-	for (int i = 0; i < size; i++) {
-		delete devices[i];
-	}
-	delete[] devices;
-}
-
 void TelecommunicationCompany::resize() {
 	allocated *= 2;
 	MobileDevice** moreDevices = new MobileDevice*[allocated];
@@ -16,6 +9,13 @@ void TelecommunicationCompany::resize() {
 	}
 	delete[] devices;
 	devices = moreDevices;
+}
+
+void TelecommunicationCompany::free() {
+	for (int i = 0; i < size; i++) {
+		delete devices[i];
+	}
+	delete[] devices;
 }
 
 TelecommunicationCompany::TelecommunicationCompany() {
