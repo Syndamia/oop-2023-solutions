@@ -4,7 +4,6 @@
 
 ### Задача 1
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week12/Exercise1)
 
 <!-- Multiple inheritance -->
 
@@ -24,7 +23,6 @@
 
 ### Задача 3
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week12/Exercise3)
 
 Реализирайте абстрактен клас `MobileDevice`, който запазва:
 
@@ -49,7 +47,6 @@
 
 ### Задача 4
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week12/Exercise4)
 
 <!-- Multiple inheritance with mixed class types, polymorphic container, and copying -->
 

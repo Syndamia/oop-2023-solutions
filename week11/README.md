@@ -10,7 +10,6 @@
 
 ### Задача 1 - Шаблони и оператори
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week11/Exercise01)
 
 Реализирайте шаблонен клас множество, който запазва фиксиран брой елементи от подаден тип.
 Реализирайте голяма петица и оператори:
@@ -21,7 +20,6 @@
 
 ### Задача 2 - Наследяване
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week11/Exercise02)
 
 Реализирайте клас `Employee`, съхраняващ име на човек, позиция и департамент като низове със съответно дължина 512, 128 и 64, заедно със заплата като число с плаваща запетая.
 
@@ -35,7 +33,6 @@
 
 ### Задача 3
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week11/Exercise03)
 
 <!-- Динамично свързване, Inherit 3 -->
 
@@ -53,7 +50,6 @@
 
 ### Задача 4
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week11/Exercise04)
 
 <!-- Dynamic linking, Inherit 2 -->
 
@@ -73,7 +69,6 @@
 
 ### Задача 5
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week11/Exercise05)
 
 <!-- Templates 1 type -->
 
@@ -82,7 +77,6 @@
 
 ### Задача 6
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week11/Exercise06)
 
 <!-- Templates 2 types -->
 
@@ -97,7 +91,6 @@
 
 ### Задача 7
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week11/Exercise07)
 
 <!-- Abstract class -->
 
@@ -120,7 +113,6 @@
 
 ### Задача 8
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week11/Exercise08)
 
 <!-- Abstract class -->
 
@@ -138,7 +130,6 @@
 
 ### Задача 9
 
-&::solution-link [Решение](https://github.com/Syndamia/oop-2023-solutions/blob/main/week11/Exercise09)
 
 Реализирайте абстрактен шаблонен клас `MixedArray`, който съхранява алтерниращи елементи от два типа.
 Тоест, на индекс 0 имаме елемент от първия тип, на индекс 1 от втория, на индекс 2 от първи и так. нат.
