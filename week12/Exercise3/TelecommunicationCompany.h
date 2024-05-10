@@ -9,10 +9,13 @@ class TelecommunicationCompany {
 	void resize();
 
 	void free();
+	void copyFrom(const TelecommunicationCompany& other);
 
 public:
 	TelecommunicationCompany();
 	~TelecommunicationCompany();
+	TelecommunicationCompany(const TelecommunicationCompany& other);
+	TelecommunicationCompany& operator=(const TelecommunicationCompany& other);
 	TelecommunicationCompany(TelecommunicationCompany&& other);
 	TelecommunicationCompany& operator=(TelecommunicationCompany&& other);
 };

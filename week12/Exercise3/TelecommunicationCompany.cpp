@@ -1,5 +1,6 @@
 #include "TelecommunicationCompany.h"
 #include "MobileDevice.h"
+#include "Telephone.h"
 
 void TelecommunicationCompany::resize() {
 	allocated *= 2;
@@ -18,6 +19,15 @@ void TelecommunicationCompany::free() {
 	delete[] devices;
 }
 
+void TelecommunicationCompany::copyFrom(const TelecommunicationCompany& other) {
+	this->allocated = other.allocated;
+	this->size = other.size;
+	this->devices = new MobileDevice*[size];
+	for (int i = 0; i < size; i++) {
+		this->devices[i] = other.devices[i]->clone();
+	}
+}
+
 TelecommunicationCompany::TelecommunicationCompany() {
 	devices = nullptr;
 	allocated = size = 0;
@@ -25,6 +35,18 @@ TelecommunicationCompany::TelecommunicationCompany() {
 
 TelecommunicationCompany::~TelecommunicationCompany() {
 	free();
+}
+
+TelecommunicationCompany::TelecommunicationCompany(const TelecommunicationCompany& other) {
+	copyFrom(other);
+}
+
+TelecommunicationCompany& TelecommunicationCompany::operator=(const TelecommunicationCompany& other) {
+	if (this != &other) {
+		copyFrom(other);
+		free();
+	}
+	return *this;
 }
 
 TelecommunicationCompany::TelecommunicationCompany(TelecommunicationCompany&& other) {

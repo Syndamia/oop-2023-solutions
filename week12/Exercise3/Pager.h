@@ -15,5 +15,6 @@ public:
 	Pager(Pager&& other);
 	Pager& operator=(Pager&& other);
 
+	virtual MobileDevice* clone() override;
 	virtual void Show() override;
 };

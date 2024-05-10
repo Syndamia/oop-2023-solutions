@@ -47,6 +47,10 @@ Pager& Pager::operator=(Pager&& other) {
 	return *this;
 }
 
+MobileDevice* Pager::clone() {
+	return new Pager(*this);
+}
+
 void Pager::Show() {
 	std::ofstream outFile(fileName);
 	if (!outFile.is_open()) {
