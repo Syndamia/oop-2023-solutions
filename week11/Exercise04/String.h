@@ -8,7 +8,7 @@ class String {
 
 public:
 	String();
-	~String();
+	virtual ~String();
 	String(const String& other);
 	String& operator=(const String& other);
 	String(String&& other);

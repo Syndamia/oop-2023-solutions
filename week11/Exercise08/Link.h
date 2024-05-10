@@ -9,7 +9,7 @@ class Link : public Message {
 
 public:
 	Link();
-	virtual ~Link() override;
+	~Link();
 	Link(const Link& other);
 	Link& operator=(const Link& other);
 	Link(Link&& other);
